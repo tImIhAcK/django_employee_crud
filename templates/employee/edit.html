@@ -1,0 +1,12 @@
+{% extends 'employee/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1 class="text-center mb-3">Update Employee</h1>
+    <div class="container-fluid px-4 py-5">
+        <form method='POST'>
+            {% csrf_token %}
+            {% crispy form %}
+        </form>
+    </div>
+{% endblock content %}

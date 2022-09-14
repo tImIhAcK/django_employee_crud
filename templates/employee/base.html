@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} <meta http-equiv="Content-Security-Policy" content="script-src 'self' cdn.jsdelivr.net cdnjs.cloudflare.com 'unsafe-inline' ">
+    <meta http-equiv="Content-Security-Policy" content="style-src 'self' cdn.jsdelivr.net cdnjs.cloudflare.com 'unsafe-inline' "> {% endcomment %}
+
+    <title>Titech - {% block title %}{% endblock title %}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css">
+
+    <style>
+        .page-link{
+            color: #198754;
+            border-color: #198754;
+        }
+
+        .page-link:hover{
+            color: #ffffff;
+            background-color: #198754;
+        }
+    </style>
+</head>
+<body>
+    
+    {% include 'employee/includes/_navbar.html' %}
+
+    <div class="container">
+        {% block messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+                    </button>
+                    <i class="icon fa fa-check"></i> {{ message|capfirst }}
+                </div>
+            {% elif message.tags == 'error' %}
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+                    </button>
+                    <i class="icon fa fa-ban"></i> {{ message|capfirst }}
+                </div>
+            {% elif message.tags == 'warning' %}
+                <div class="alert alert-warning alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+                    </button>
+                    <i class="icon fa fa-exclamation-triangle"></i> {{ message|capfirst }}
+                </div>
+            {% elif message.tags == 'info' %}
+                <div class="alert alert-info alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+                    </button>
+                    <i class="icon fa fa-info"></i> {{ message|capfirst }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endblock messages %}
+    </div>
+
+    {% block content %}
+    {% endblock content %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+</body>
+</html>
