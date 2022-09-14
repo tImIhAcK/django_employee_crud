@@ -1,0 +1,13 @@
+asgiref==3.5.2
+crispy-bootstrap5==0.6
+dj-database-url==1.0.0
+Django==4.1.1
+django-crispy-forms==1.14.0
+django-heroku==0.3.1
+django-phonenumber-field==7.0.0
+gunicorn==20.1.0
+phonenumbers==8.12.55
+psycopg2==2.9.3
+python-decouple==3.6
+sqlparse==0.4.2
+whitenoise==6.2.0
