@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from decouple import config
 import locale
+import django_heroku
 
 
 config.encoding = locale.getpreferredencoding(False)
@@ -13,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG')
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
@@ -121,3 +122,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Crispy settings
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+
+django_heroku.settings(locals())
